@@ -11,6 +11,7 @@
         <servlet-name>MyServlet</servlet-name>
         <url-pattern>/my-servlet</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>GetListStudent</servlet-name>
         <servlet-class>com.example.helloT2008M.controller.StudentServlet</servlet-class>
@@ -19,12 +20,86 @@
         <servlet-name>GetListStudent</servlet-name>
         <url-pattern>/student/list</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetAllPerson</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.Person.Create</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAllPerson</servlet-name>
+        <url-pattern>/person/getAll</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>PostPerson</servlet-name>
-        <servlet-class>com.example.helloT2008M.controller.PersonServlet</servlet-class>
+        <servlet-class>com.example.helloT2008M.controller.Person.Create</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PostPerson</servlet-name>
         <url-pattern>/person/save</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PutPerson</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.Person.Update</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PutPerson</servlet-name>
+        <url-pattern>/person/update</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeletePerson</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.Person.Delete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePerson</servlet-name>
+        <url-pattern>/person/delete</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.Auth.Register</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/account/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.Auth.Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/account/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListProduct</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.Product.GetAll</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListProduct</servlet-name>
+        <url-pattern>/products</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateProduct</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.Product.Create</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateProduct</servlet-name>
+        <url-pattern>/products/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateProduct</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.Product.Update</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateProduct</servlet-name>
+        <url-pattern>/products/update</url-pattern>
+    </servlet-mapping>
+
 </web-app>

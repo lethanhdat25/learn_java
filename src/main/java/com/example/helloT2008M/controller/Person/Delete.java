@@ -1,4 +1,4 @@
-package com.example.helloT2008M.controller;
+package com.example.helloT2008M.controller.Person;
 
 import com.example.helloT2008M.entity.Person;
 import com.example.helloT2008M.model.PersonModel;
@@ -9,18 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class PersonServlet extends HttpServlet {
+public class Delete extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-        String name = req.getParameter("name");
-        int age = Integer.parseInt(req.getParameter("age"));
-        Person person = new Person(name, age);
+        int id = Integer.parseInt(req.getParameter("id"));
+        Person person = new Person();
         PersonModel personModel = new PersonModel();
-        try {
-            personModel.save(person);
-        } catch (InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        personModel.delete(person, id);
     }
 }

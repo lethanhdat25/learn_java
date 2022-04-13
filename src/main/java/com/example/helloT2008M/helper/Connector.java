@@ -6,12 +6,13 @@ import java.sql.SQLException;
 
 public class Connector {
     private static Connection connection;
-    public static String connectString = "jdbc:mysql://localhost:3306/ledat123";
+    public static String connectString = "jdbc:mysql://localhost:3306/fdata";
     public static String userName = "root";
     public static String password = "";
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
+
         if (connection == null) {
             connection = DriverManager.getConnection(connectString, userName, password);
         } else {
@@ -20,4 +21,5 @@ public class Connector {
 
         return connection;
     }
+
 }

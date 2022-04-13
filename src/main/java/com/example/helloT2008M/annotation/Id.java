@@ -10,5 +10,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Id {
-    String name() default Constants.PRIMARY_KEY;
+    String name();
+    String type();
+    boolean isPrimaryKey() default false;
+    boolean isAutoIncrement() default false;
 }
