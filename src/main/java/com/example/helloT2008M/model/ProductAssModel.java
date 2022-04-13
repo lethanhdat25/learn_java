@@ -21,11 +21,13 @@ public class ProductAssModel {
     public List<ProductAss> getAll(ProductAss product) throws SQLException {
         ResultSet rs = myRepository.getAll(product);
         List<ProductAss> products = new ArrayList<>();
+        System.out.println(rs);
 
         while (rs.next()) {
                 String name = rs.getString("name");
                 Double price = Double.parseDouble(rs.getString("price"));
                 int amount = Integer.parseInt(rs.getString("amount"));
+                System.out.println(name);
                 String detail = rs.getString("detail");
                 ProductAss newProduct = new ProductAss( name, price,amount,detail);
                 products.add(newProduct);

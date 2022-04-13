@@ -35,7 +35,7 @@ public class Login extends HttpServlet {
             }
 
             req.setAttribute("userName",resUser.getUsername());
-            req.getRequestDispatcher("/Example/Product.jsp").forward(req, resp);
+            resp.sendRedirect("/example/products");
         }
 
 

@@ -37,6 +37,7 @@ public class MyRepository<T> {
         stringBuilder.append(tableName);
 
         //TODO: Execute Statement
+        System.out.println(stringBuilder);
         return ExecuteStatement.ExecuteQuery(stringBuilder);
     }
 

@@ -5,7 +5,7 @@ import com.example.helloT2008M.annotation.Id;
 import com.example.helloT2008M.annotation.Table;
 import com.example.helloT2008M.ultil.Constants.Constants;
 
-@Table(name = "tbProducts")
+@Table(name = "tbproducts")
 public class ProductAss {
     @Id(name = "id", type = Constants.INT, isAutoIncrement = true, isPrimaryKey = true)
     public int id;

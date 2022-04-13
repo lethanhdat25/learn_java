@@ -114,7 +114,7 @@
 
     <servlet>
         <servlet-name>Example_Product</servlet-name>
-        <servlet-class>com.example.helloT2008M.controller.Product.Update</servlet-class>
+        <servlet-class>com.example.helloT2008M.controller.ProductAss.GetAll</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Example_Product</servlet-name>
