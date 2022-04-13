@@ -24,29 +24,29 @@ public class Login  extends HttpServlet {
         Account account = new Account();
         Account resAccount = accountModel.findAccountByUserName(account, userName);
 
-        if (account == null){
+        if (resAccount == null){
             resp.getWriter().println("Invalid information!");
             return;
         }
-        if (account.getStatus() == 2){
+        if (resAccount.getStatus() == 2){
             if (LocalDateTime.now().compareTo(account.getLockTime()) > 0){
-                account.setStatus(1);
-                account.setFailureCount(0);
-                accountModel.updateLock(account.getUserName(),account);
+                resAccount.setStatus(1);
+                resAccount.setFailureCount(0);
+                accountModel.updateLock(resAccount.getUserName(),resAccount);
             }else{
-                resp.getWriter().println("You account has been locked, please try again after " + account.getFullName());
+                resp.getWriter().println("You account has been locked, please try again after " + resAccount.getFullName());
                 return;
             }
         }
 
-        boolean checkPassword = PasswordHandler.checkPassword(password, account.getPassword(), account.getSalt());
+        boolean checkPassword = PasswordHandler.checkPassword(password, resAccount.getPassword(), resAccount.getSalt());
         if (checkPassword){
             resp.getWriter().println("Login success");
         }else{
-            account.setFailureCount(account.getFailureCount() + 1);
-            if (account.getFailureCount() == MAX_COUNT){
-                account.setStatus(2);
-                account.setLockTime(LocalDateTime.now().plusMinutes(5));
+            resAccount.setFailureCount(resAccount.getFailureCount() + 1);
+            if (resAccount.getFailureCount() == MAX_COUNT){
+                resAccount.setStatus(2);
+                resAccount.setLockTime(LocalDateTime.now().plusMinutes(5));
                 accountModel.updateLock(account.getUserName(),account);
             }
             resp.getWriter().println("Login fail!");

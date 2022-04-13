@@ -102,4 +102,24 @@
         <url-pattern>/products/update</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>Example_Login</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.UserAss.Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Example_Login</servlet-name>
+        <url-pattern>/example/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Example_Product</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.Product.Update</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Example_Product</servlet-name>
+        <url-pattern>/example/products</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
