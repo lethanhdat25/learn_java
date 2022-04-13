@@ -1,5 +1,6 @@
 <%@ page import="java.util.HashMap" %>
-<%@ page import="com.example.helloT2008M.entity.Product" %><%--
+<%@ page import="com.example.helloT2008M.entity.Product" %>
+<%@ page import="com.example.helloT2008M.ultil.Constants.Constants" %><%--
   Created by IntelliJ IDEA.
   User: letha
   Date: 4/11/2022
@@ -29,7 +30,7 @@
         crossorigin="anonymous"></script>
 <body>
 
-<form action="<%=(product!=null?"/products/update":"/products/create")%>" method="post">
+<form action="<%=(product!=null?"/products/update":"/products/create")%>" class="col-md-9 m-auto" method="post" name="product-form">
     <%
         if (product != null) {%>
     <div class="form-group" style="opacity: 0">
@@ -74,7 +75,9 @@
     </div>
     <div class="form-group">
         <label for="image">Image</label>
-        <input type="text" value="<%=(product!=null?product.getImage():"")%>" class="form-control" name="image"
+        <button type="button" id="upload_widget" class="cloudinary-button">Upload files</button>
+        <img src="" class="hide" id="image-preview"/>
+        <input type="hidden" value="" class="form-control" name="image"
                id="image" placeholder="Image">
         <%
             if (errors.containsKey("image")) {%>
@@ -83,7 +86,7 @@
     </div>
     <div class="form-group">
         <label for="price">Price</label>
-        <input type="text" value="<%=(product!=null?product.getPrice():"")%>" class="form-control" name="price"
+        <input type="number" value="<%=(product!=null?product.getPrice():0)%>" class="form-control" name="price"
                id="price" placeholder="Price">
         <%
             if (errors.containsKey("price")) {%>
@@ -91,18 +94,21 @@
         <%}%>
     </div>
     <%
-        if (product != null) {
-    %>
+        if (product != null) {%>
     <div class="form-group">
         <label for="status">Status</label>
-        <input type="text" value="<%=(product!=null?product.getStatus():"")%>" class="form-control" name="status"
-               id="status" placeholder="Price">
+        <select class="form-select" name="status" id="status" aria-label="status">
+            <option selected><%=(product != null ? product.getStatus() : "Category")%></option>
+            <option value="<%=Constants.STATUS_STOP_SELLING%>"><%=Constants.STATUS_STOP_SELLING%></option>
+            <option value="<%=Constants.STATUS_DELETED%>"><%=Constants.STATUS_DELETED%></option>
+        </select>
         <%
             if (errors.containsKey("status")) {%>
         <span style="color: red"><%=errors.get("status")%></span>
         <%}%>
     </div>
     <%}%>
+
     <%
         if (product != null) {%>
     <div class="form-group" style="opacity: 0">
@@ -111,7 +117,37 @@
                id="createAt" placeholder="createAt">
     </div>
     <%}%>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary w-100 mt-4">Submit</button>
 </form>
+
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<style>
+    .hide{
+        display: none;
+    }
+    #image-preview{
+        width: 250px;
+    }
+</style>
+
+<script type="text/javascript">
+    var myWidget = cloudinary.createUploadWidget({
+            cloudName: 'ledat123',
+            uploadPreset: 'f64vudk6'}, (error, result) => {
+            if (!error && result && result.event === "success") {
+                console.log('Done! Here is the image info: ', result.info);
+                const img = document.getElementById("image-preview");
+                img.classList.remove("hide");
+                img.src= result.info.url;
+                document.forms["product-form"]['image'].value = result.info.url;
+            }
+        }
+    )
+
+    document.getElementById("upload_widget").addEventListener("click", function(){
+        myWidget.open();
+    }, false);
+</script>
 </body>
 </html>

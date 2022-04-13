@@ -32,5 +32,12 @@ public  class Constants {
     public static final String DOUBLE = "DOUBLE(12,4)";
     //..................................................................................................................
 
+    //PRODUCT
+    public static final String STATUS_SELLING = "Đang Bán";
+    public static final String STATUS_ = "Đang Bán";
+    public static final String STATUS_STOP_SELLING = "Dừng Bán";
+    public static final String STATUS_DELETED = "Đã Xóa";
+    //..................................................................................................................
+
 
 }

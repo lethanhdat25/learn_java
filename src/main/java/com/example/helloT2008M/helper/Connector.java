@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Connector {
     private static Connection connection;
-    public static String connectString = "jdbc:mysql://localhost:3306/fdata";
+    public static String connectString = "jdbc:mysql://localhost:3306/ledat123";
     public static String userName = "root";
     public static String password = "";
 

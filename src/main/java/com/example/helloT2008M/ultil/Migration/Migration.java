@@ -70,7 +70,7 @@ public class Migration {
                 if (field.isAnnotationPresent(Column.class)) {
                     Column column = field.getDeclaredAnnotation(Column.class);
                     if(!column.isCreate()){
-                        return;
+                        continue;
                     }
                     columnName = column.name();
                     columnType = column.type();

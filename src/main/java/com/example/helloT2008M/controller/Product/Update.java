@@ -3,6 +3,7 @@ import com.example.helloT2008M.entity.Person;
 import com.example.helloT2008M.entity.Product;
 import com.example.helloT2008M.model.PersonModel;
 import com.example.helloT2008M.model.ProductModel;
+import com.example.helloT2008M.ultil.Constants.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 
 @MultipartConfig
 public class Update extends HttpServlet {
@@ -27,6 +29,17 @@ public class Update extends HttpServlet {
         Product rsProduct = productModel.findById(product,id);
         if (rsProduct == null){
             req.setAttribute("error","This product is not exist!");
+            List<Product> products= null;
+            try {
+                products = productModel.getAll(product);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            req.setAttribute("products",products);
+            req.getRequestDispatcher("/Product/ListProduct.jsp").forward(req,resp);
+        }
+        if (!Objects.equals(rsProduct.getStatus(), Constants.STATUS_SELLING)){
+            req.setAttribute("error","This product is not selling!");
             List<Product> products= null;
             try {
                 products = productModel.getAll(product);
@@ -60,6 +73,7 @@ public class Update extends HttpServlet {
 
         try {
             productModel.update(product,id);
+            resp.sendRedirect("/products");
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }

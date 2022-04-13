@@ -31,10 +31,15 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col ">Image</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Category</th>
+        <th scope="col">Description</th>
+        <th scope="col">CreateAt</th>
+        <th scope="col">UpdateAt</th>
+        <th scope="col">Status</th>
+        <th scope="col">More Action</th>
     </tr>
     </thead>
     <tbody>
@@ -54,7 +59,7 @@
         <th scope="row"><%=product.getStatus()%></th>
         <th>
             <a href="/products/update?id=<%=product.getId()%>" class="btn btn-primary">Update</a>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <a href="/products/delete?id=<%=product.getId()%>" type="button" class="btn btn-danger">Delete</a>
         </th>
     </tr>
     <%}%>

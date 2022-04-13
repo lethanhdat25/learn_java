@@ -102,6 +102,15 @@
         <url-pattern>/products/update</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>DeleteProduct</servlet-name>
+        <servlet-class>com.example.helloT2008M.controller.Product.Delete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteProduct</servlet-name>
+        <url-pattern>/products/delete</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>Example_Login</servlet-name>

@@ -47,6 +47,7 @@ public class Create extends HttpServlet {
         ProductModel productModel = new ProductModel();
         try {
             productModel.save(product);
+                resp.sendRedirect("/products");
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }

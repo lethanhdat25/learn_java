@@ -4,6 +4,7 @@ import com.example.helloT2008M.Repository.MyRepository;
 import com.example.helloT2008M.entity.Account;
 import com.example.helloT2008M.entity.Product;
 import com.example.helloT2008M.entity.Student;
+import com.example.helloT2008M.ultil.Constants.Constants;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -55,8 +56,10 @@ public class ProductModel {
         myRepository.update(product, id);
     }
 
-    public void delete(Product product, int id) {
-        myRepository.delete(product, id);
+    public void delete(Product product, int id) throws IllegalAccessException {
+        Product resProduct=findById(product,id);
+        resProduct.setStatus(Constants.STATUS_DELETED);
+        update(resProduct,id);
     }
 
     public Product findById(Product product, int id){
